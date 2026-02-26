@@ -1,0 +1,6 @@
+build/
+tmp/cover_render.png
+*.aux
+*.fdb_latexmk
+*.fls
+*.log

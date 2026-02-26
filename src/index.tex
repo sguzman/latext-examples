@@ -1,0 +1,78 @@
+\begin{tikzpicture}[x=1pt,y=1pt]
+  % Canvas (reference image is a square with generous white margins)
+  \fill[white] (0,0) rectangle (225,225);
+
+  % Magazine placement
+  \def\cx{58}
+  \def\cy{22}
+  \def\cw{112}
+  \def\ch{180}
+
+  % Soft drop shadow
+  \fill[black!20] ($(\cx+3,\cy-3)$) rectangle ($(\cx+\cw+3,\cy+\ch-3)$);
+
+  \begin{scope}[shift={(\cx,\cy)}]
+    % Base cover
+    \fill[coverbg] (0,0) rectangle (\cw,\ch);
+
+    % Header blocks
+    \fill[headerrose] (0,\ch-52) rectangle (\cw,\ch);
+    \fill[headerblue] (0,\ch-52) -- (52,\ch-52) -- (0,\ch) -- cycle;
+    \fill[rose1] (52,\ch-52) -- (\cw,\ch-52) -- (\cw,\ch) -- cycle;
+
+    % Mid geometry bands
+    \fill[coral] (0,\ch-93) rectangle (70,\ch-52);
+    \fill[blue2] (70,\ch-93) -- (\cw,\ch-52) -- (\cw,\ch-93) -- cycle;
+    \fill[coverbg] (70,\ch-93) rectangle (\cw,\ch-52);
+
+    \fill[coverbg] (0,\ch-133) rectangle (70,\ch-93);
+    \fill[rose2] (70,\ch-133) -- (\cw,\ch-93) -- (\cw,\ch-133) -- cycle;
+
+    % Lower geometry
+    \fill[deepblue] (0,\ch-160) rectangle (70,\ch-133);
+    \fill[cyan1] (44,\ch-160) -- (84,\ch-160) -- (70,\ch-133) -- cycle;
+
+    \fill[coverbg] (0,0) rectangle (70,\ch-160);
+    \fill[deepblue] (70,0) rectangle (\cw,\ch-133);
+
+    \fill[coral] (70,\ch-133) -- (\cw,\ch-133) -- (\cw,\ch-160) -- cycle;
+    \fill[coverbg] (70,\ch-160) -- (\cw,\ch-160) -- (70,\ch-93) -- cycle;
+
+    % Fine white line motif on coral region
+    \foreach \x in {74,82,90,98,106} {
+      \draw[white, line width=0.5pt] (\x,\ch-140) -- (\x,\ch-93);
+    }
+    \foreach \y in {\ch-140,\ch-132,\ch-124,\ch-116,\ch-108,\ch-100} {
+      \draw[white, line width=0.5pt] (70,\y) -- (102,\y);
+    }
+
+    % Cyan stripe motif
+    \foreach \k in {0,...,6} {
+      \draw[white, line width=0.45pt] (47,\ch-157+5*\k) -- (81,\ch-157+5*\k);
+    }
+
+    % Concentric circular arcs (decorative rings)
+    \draw[white, line width=0.6pt] (0,\ch) circle (28);
+    \draw[white, line width=0.6pt] (0,\ch) circle (38);
+    \draw[white, line width=0.6pt] (0,\ch) circle (48);
+
+    \draw[white, line width=0.6pt] (0,0) circle (13);
+    \draw[white, line width=0.6pt] (0,0) circle (19);
+
+    \draw[white, line width=0.6pt] (0,\ch-93) circle (13);
+    \draw[white, line width=0.6pt] (\cw,\ch-52) circle (11);
+
+    \draw[white, line width=0.6pt] (\cw,0) circle (23);
+    \draw[white, line width=0.6pt] (\cw,0) circle (34);
+
+    % Small icon square near center
+    \draw[white, line width=0.9pt, rotate around={40:(56,96)}] (52,92) rectangle (60,100);
+
+    % Title and side text
+    \node[text=black!85, font=\bfseries\fontsize{14}{14}\selectfont, align=center] at (67,\ch-20) {MAGAZINE\\DESIGN};
+    \node[text=black!70, font=\fontsize{5.5}{6}\selectfont, rotate=-90] at (\cw-6,\ch-26) {AUGUST 2022};
+  \end{scope}
+
+  % Footer credit
+  \node[text=black!85, font=\fontsize{6}{6.5}\selectfont] at (112.5,20) {pngtree.com};
+\end{tikzpicture}
