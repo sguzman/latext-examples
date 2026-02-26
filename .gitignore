@@ -4,3 +4,5 @@ tmp/cover_render.png
 *.fdb_latexmk
 *.fls
 *.log
+*.pdf
+tmp
