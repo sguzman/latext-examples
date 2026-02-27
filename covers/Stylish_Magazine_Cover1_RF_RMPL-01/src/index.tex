@@ -1,4 +1,52 @@
-\begin{tikzpicture}[remember picture,overlay]
-\node[anchor=south west,inner sep=0] at (current page.south west) {\includegraphics[width=350bp,height=350bp]{reference.jpg}};
+\begin{tikzpicture}[x=1bp,y=1bp]
+  \path[use as bounding box] (0,0) rectangle (350,350);
+  \fill[bg] (0,0) rectangle (350,350);
+
+  % Soft cyan halo behind the card.
+  \fill[glow,opacity=0.22] (175,173) circle (145);
+  \fill[glow,opacity=0.16] (175,173) circle (120);
+
+  % Magazine geometry.
+  \def\cx{86}
+  \def\cy{48}
+  \def\cw{178}
+  \def\ch{248}
+
+  % Card shadow.
+  \fill[black!24,opacity=0.22] ($( \cx+4,\cy-4)$) rectangle ($( \cx+\cw+6,\cy+\ch-4)$);
+  \fill[black!18,opacity=0.2] ($( \cx+8,\cy-8)$) rectangle ($( \cx+\cw+12,\cy-2)$);
+
+  % Card base.
+  \begin{scope}[shift={(\cx,\cy)}]
+    \fill[white] (0,0) rectangle (\cw,\ch);
+    \clip (0,0) rectangle (\cw,\ch);
+
+    % Top facets.
+    \fill[peach,opacity=0.95] (0,178) -- (95,208) -- (95,248) -- (0,248) -- cycle;
+    \fill[pink,opacity=0.78] (45,248) -- (\cw,248) -- (\cw,188) -- cycle;
+    \fill[rose,opacity=0.55] (69,248) -- (\cw-4,248) -- (\cw-4,230) -- cycle;
+
+    % Bottom-left facets.
+    \fill[teal,opacity=0.9] (0,0) -- (72,0) -- (0,92) -- cycle;
+    \fill[teal2,opacity=0.78] (0,14) -- (105,0) -- (0,110) -- cycle;
+    \fill[mint,opacity=0.7] (0,70) -- (132,0) -- (28,0) -- cycle;
+
+    % Bottom-right facets.
+    \fill[cream,opacity=0.92] (95,0) -- (\cw,0) -- (\cw,105) -- cycle;
+    \fill[cream,opacity=0.66] (56,0) -- (\cw,84) -- (\cw,24) -- cycle;
+    \fill[mint,opacity=0.56] (34,0) -- (146,0) -- (\cw,60) -- (78,44) -- cycle;
+
+    % White crossing bands.
+    \fill[white,opacity=0.92] (0,172) -- (88,196) -- (\cw,116) -- (\cw,94) -- (78,156) -- (0,132) -- cycle;
+    \fill[white,opacity=0.9] (0,118) -- (82,156) -- (149,120) -- (72,84) -- cycle;
+    \fill[white,opacity=0.88] (82,156) -- (\cw,94) -- (\cw,116) -- (88,196) -- cycle;
+
+    % Inner border.
+    \draw[edge,line width=3.2bp] (6,6) rectangle (\cw-6,\ch-6);
+    \draw[edge!75!gray,line width=0.8bp,opacity=0.5] (6,6) rectangle (\cw-6,\ch-6);
+
+    % Title text.
+    \node[text=textg,font=\bfseries\fontsize{22}{22}\selectfont] at (\cw/2,122) {MAGAZINE};
+    \node[text=textg,font=\bfseries\fontsize{14}{14}\selectfont] at (\cw/2,98) {C O V E R};
+  \end{scope}
 \end{tikzpicture}
-\null
