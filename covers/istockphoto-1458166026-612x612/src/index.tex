@@ -1,3 +1,58 @@
-\begin{tikzpicture}[remember picture,overlay]
-\node[anchor=south west,inner sep=0] at (current page.south west) {\includegraphics[width=612pt,height=535pt]{../assets/reference.jpg}};
+\begin{tikzpicture}[x=1bp,y=1bp]
+  \path[use as bounding box] (0,0) rectangle (612,535);
+  \fill[bggray] (0,0) rectangle (612,535);
+
+  % Card proportions tuned to the reference.
+  \def\cx{158}
+  \def\cy{58}
+  \def\cw{294}
+  \def\ch{420}
+  \def\sw{122}
+  \def\sx{\cx+\cw-\sw}
+
+  % Soft shadow.
+  \fill[black!14,opacity=0.25] (\cx+9,\cy-9) rectangle (\cx+\cw+10,\cy+\ch-9);
+  \fill[black!10,opacity=0.18] (\cx+14,\cy-16) rectangle (\cx+\cw+16,\cy-8);
+  \fill[black!8,opacity=0.14] (\cx+8,\cy-24) rectangle (\cx+\cw+14,\cy-18);
+
+  % Main white panel.
+  \fill[white] (\cx,\cy) rectangle (\cx+\cw,\cy+\ch);
+
+  % Right geometric strip.
+  \begin{scope}
+    \clip (\sx,\cy) rectangle (\sx+\sw,\cy+\ch);
+    \fill[bluebase] (\sx,\cy) rectangle (\sx+\sw,\cy+\ch);
+
+    % Cube tile: top, left, right faces.
+    \newcommand{\cube}[6]{%
+      \fill[#4] (#1,#2+#3) -- (#1+#3,#2+2*#3) -- (#1+2*#3,#2+#3) -- (#1+#3,#2) -- cycle;
+      \fill[#5] (#1,#2+#3) -- (#1+#3,#2) -- (#1+#3,#2-2*#3) -- (#1,#2-#3) -- cycle;
+      \fill[#6] (#1+2*#3,#2+#3) -- (#1+#3,#2) -- (#1+#3,#2-2*#3) -- (#1+2*#3,#2-#3) -- cycle;
+    }
+
+    \def\u{17}
+    \foreach \r in {0,...,10} {
+      \pgfmathsetmacro\yy{\cy+14+\r*38}
+      \ifodd\r
+        \cube{\sx-10}{\yy}{\u}{teal}{bluebase}{navy}
+        \cube{\sx+24}{\yy}{\u}{orange}{navy}{bluebase}
+        \cube{\sx+58}{\yy}{\u}{sand}{bluebase}{teal}
+        \cube{\sx+92}{\yy}{\u}{teal}{navy}{orange}
+      \else
+        \cube{\sx-10}{\yy}{\u}{orange}{navy}{bluebase}
+        \cube{\sx+24}{\yy}{\u}{teal}{bluebase}{sand}
+        \cube{\sx+58}{\yy}{\u}{navy}{teal}{bluebase}
+        \cube{\sx+92}{\yy}{\u}{orange}{bluebase}{navy}
+      \fi
+    }
+
+    % Edge accents.
+    \fill[sand] (\sx+90,\cy+\ch-22) -- (\sx+122,\cy+\ch-5) -- (\sx+154,\cy+\ch-22) -- (\sx+122,\cy+\ch-39) -- cycle;
+    \fill[teal] (\sx-2,\cy+8) -- (\sx+30,\cy+26) -- (\sx+62,\cy+8) -- (\sx+30,\cy-10) -- cycle;
+  \end{scope}
+
+  % Left-side typography.
+  \node[anchor=west,text=black!82,font=\sffamily\bfseries\fontsize{6.4}{6.5}\selectfont] at (\cx+16,\cy+\ch-51) {Business Brochure.};
+  \node[anchor=west,text=black,font=\sffamily\bfseries\fontsize{39}{37}\selectfont,align=left] at (\cx+16,\cy+\ch-132) {Template\\Style.};
+  \node[anchor=west,text=black!80,font=\sffamily\bfseries\fontsize{5.8}{6.1}\selectfont,align=left] at (\cx+16,\cy+24) {template text small, evergreen\\adipiscing elit, sed doem.};
 \end{tikzpicture}

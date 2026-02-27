@@ -1,0 +1,75 @@
+\begin{tikzpicture}[x=1bp,y=1bp]
+  \path[use as bounding box] (0,0) rectangle (392,540);
+
+  % Base and diagonal split
+  \fill[mustard] (0,0) rectangle (392,540);
+  \fill[paperwhite] (-8,-8) -- (402,-8) -- (402,270) -- (-8,340) -- cycle;
+  \fill[gray!45] (386,0) rectangle (392,540);
+
+  % Top blob cluster
+  \begin{scope}
+    \clip (0,0) rectangle (392,540);
+    \fill[greenblob,opacity=0.70] (157,500) .. controls (132,450) and (157,405) .. (212,398)
+      .. controls (267,391) and (312,411) .. (332,452)
+      .. controls (356,499) and (335,534) .. (289,540)
+      .. controls (232,548) and (177,542) .. (157,500) -- cycle;
+
+    \fill[redblob,opacity=0.79] (150,436) .. controls (120,401) and (144,353) .. (199,342)
+      .. controls (263,330) and (334,348) .. (367,388)
+      .. controls (396,424) and (391,467) .. (355,493)
+      .. controls (290,539) and (190,484) .. (150,436) -- cycle;
+
+    \fill[magblob,opacity=0.80] (166,366) .. controls (150,322) and (193,287) .. (251,282)
+      .. controls (320,276) and (378,309) .. (401,359)
+      .. controls (418,395) and (405,434) .. (366,454)
+      .. controls (300,489) and (187,425) .. (166,366) -- cycle;
+
+    \fill[blueblob,opacity=0.74] (289,548) .. controls (251,528) and (243,469) .. (256,420)
+      .. controls (272,362) and (332,331) .. (401,332)
+      .. controls (447,333) and (472,365) .. (470,420)
+      .. controls (468,498) and (404,568) .. (289,548) -- cycle;
+  \end{scope}
+
+  % Bottom-right blob cluster
+  \begin{scope}
+    \clip (0,0) rectangle (392,540);
+    \fill[blueblob,opacity=0.73] (214,219) .. controls (184,188) and (188,139) .. (220,108)
+      .. controls (262,66) and (336,71) .. (377,109)
+      .. controls (411,140) and (418,180) .. (392,214)
+      .. controls (359,256) and (258,264) .. (214,219) -- cycle;
+
+    \fill[greenblob,opacity=0.71] (251,273) .. controls (218,261) and (197,219) .. (212,174)
+      .. controls (232,113) and (291,97) .. (351,106)
+      .. controls (407,114) and (432,160) .. (421,207)
+      .. controls (404,279) and (315,297) .. (251,273) -- cycle;
+
+    \fill[redblob,opacity=0.77] (275,233) .. controls (240,206) and (245,156) .. (284,128)
+      .. controls (333,93) and (403,96) .. (441,130)
+      .. controls (471,157) and (476,196) .. (455,229)
+      .. controls (423,280) and (328,274) .. (275,233) -- cycle;
+
+    \fill[magblob,opacity=0.83] (246,166) .. controls (236,112) and (278,67) .. (347,45)
+      .. controls (414,23) and (492,44) .. (519,93)
+      .. controls (541,133) and (526,181) .. (479,208)
+      .. controls (414,245) and (259,231) .. (246,166) -- cycle;
+  \end{scope}
+
+  % Decorative white dots
+  \fill[white,opacity=0.95] (287,499) circle (4.2);
+  \fill[white,opacity=0.95] (311,499) circle (4.2);
+  \fill[white,opacity=0.95] (335,499) circle (4.2);
+
+  % Text block
+  \node[anchor=west,text=ink,font=\fontfamily{phv}\selectfont\bfseries\fontsize{18}{18}\selectfont] at (44,250) {C O V E R};
+  \node[anchor=west,text=ink,font=\fontfamily{phv}\selectfont\bfseries\fontsize{18}{18}\selectfont] at (44,216) {R E P O R T};
+  \node[anchor=west,text=ink,font=\fontfamily{phv}\selectfont\bfseries\fontsize{11.5}{11.5}\selectfont] at (44,189) {2 0 4 5};
+
+  \node[anchor=west,text=ink,font=\fontfamily{phv}\selectfont\bfseries\fontsize{9.8}{9.8}\selectfont] at (44,136) {GLOBAL BUSINESS SOLUTION};
+  \node[anchor=west,text=ink!95,font=\fontfamily{phv}\selectfont\fontsize{7.4}{9.2}\selectfont,align=left,text width=205bp] at (44,117)
+    {Lorem ipsum dolor sit amet, consectetur adipiscing\
+     elit, sed diam nonummy nibh euismod tincidunt ut\
+     laoreet dolore magna aliquam erat volutpat. Ut wisi\
+     enim ad minim veniam, quis nostrud exerci tation\
+     ullamcorper suscipit lobortis nisl ut aliquip ex ea\
+     commodo consequat. Duis autem vel eum iriure dolor};
+\end{tikzpicture}
